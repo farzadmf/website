@@ -145,7 +145,7 @@ returns a status of 200. After that, the handler returns a status of 500.
 
 ```go
 http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
-    duration := time.Now().Sub(started)
+    duration := time.Since(started)
     if duration.Seconds() > 10 {
         w.WriteHeader(500)
         w.Write([]byte(fmt.Sprintf("error: %v", duration.Seconds())))
